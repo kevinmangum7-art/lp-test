@@ -35,12 +35,12 @@
     background:var(--mist);
     font-family:var(--f);
     color:var(--navy);
-    padding:26px 20px 96px;
+    padding:20px 14px 96px;
     -webkit-font-smoothing:antialiased;
     font-variant-numeric:tabular-nums;
   }
 
-  .deck{max-width:1200px;margin:0 auto}
+  .deck{max-width:1680px;margin:0 auto}
 
   .slide{
     background:var(--white);
@@ -54,7 +54,7 @@
   @keyframes in{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
 
   /* ---------- header band (navy) ---------- */
-  .band{background:var(--navy);color:var(--white);padding:24px 34px 26px;position:relative}
+  .band{background:var(--navy);color:var(--white);padding:22px 26px 24px;position:relative}
   .band::after{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--accent)}
 
   .brandrow{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:20px}
@@ -79,7 +79,7 @@
   .fact .v.warn{color:var(--mark-3)}
 
   /* ---------- controls ---------- */
-  .controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap;padding:18px 34px;border-bottom:1px solid var(--rule)}
+  .controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap;padding:16px 26px;border-bottom:1px solid var(--rule)}
   .ctl-k{font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--slate);margin-right:4px}
 
   /* primary button — outlined navy on light */
@@ -100,17 +100,20 @@
   .sp{flex:1}
 
   /* ---------- table ---------- */
-  .tw{padding:4px 34px 8px;overflow-x:auto}
+  .tw{padding:4px 26px 8px;overflow-x:auto}
   table{width:100%;border-collapse:collapse}
-  thead th{
-    font-size:11px;font-weight:500;letter-spacing:.11em;text-transform:uppercase;color:var(--slate);
-    text-align:right;padding:16px 8px 10px;border-bottom:1.5px solid var(--rule-hard);white-space:nowrap;
+  tr.hdr th{
+    font-size:10.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--slate);
+    text-align:right;padding:8px 7px;white-space:nowrap;
+    background:rgba(233,239,244,.6);
+    border-top:1.5px solid var(--rule-hard);border-bottom:1.5px solid var(--rule-hard);
   }
-  thead th.lft{text-align:left;padding-left:0}
-  tbody td{font-size:15px;font-weight:400;text-align:right;padding:10px 9px;border-bottom:1px solid var(--rule);white-space:nowrap}
+  tr.hdr th.lft{text-align:left;padding-left:10px}
+  tr.hdr th.cv{background:rgba(233,239,244,.95);color:var(--navy)}
+  tbody td{font-size:14.5px;font-weight:400;text-align:right;padding:9px 7px;border-bottom:1px solid var(--rule);white-space:nowrap}
   tbody td.lft{text-align:left;padding-left:0}
 
-  tr.arm td{border-bottom:none;padding-top:26px;padding-bottom:7px}
+  tr.arm td{border-bottom:none;padding-top:30px;padding-bottom:9px}
   tr.arm .lft{font-size:19px;font-weight:600;letter-spacing:-.014em}
   tr.arm .note{font-size:13px;font-weight:400;color:var(--slate)}
 
@@ -118,17 +121,17 @@
   tr.camp:hover td{background:var(--mist)}
   tr.camp .lft{padding-left:16px;font-weight:500;position:relative}
   tr.camp .lft::before{content:'';position:absolute;left:1px;top:1.05em;width:8px;height:1.5px;background:var(--rule-hard)}
-  .csub{display:block;font-size:11.5px;font-weight:400;color:var(--slate);margin-top:2px;letter-spacing:.01em}
+  .csub{display:block;font-size:11px;font-weight:400;color:var(--slate);margin-top:2px;letter-spacing:.01em}
 
   tr.tot td{border-top:1.5px solid var(--rule-hard);border-bottom:2px solid var(--navy);font-weight:600;background:rgba(233,239,244,.5)}
   tr.tot .lft{font-size:12px;font-weight:600;letter-spacing:.13em;text-transform:uppercase}
 
   td.zero{color:var(--slate);opacity:.55}
   td.flag{color:var(--mark-1);font-weight:600}
-  td.pos{background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:600}
+  /* gradient lives on a span, not the cell, so row backgrounds can change freely */
+  .posv{background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:600}
   .na{color:var(--slate);opacity:.32}
-  td.cv{font-size:12.5px;font-weight:500;color:var(--slate);background:rgba(233,239,244,.45)}
-  thead th.cv{font-size:10px;letter-spacing:.06em;background:rgba(233,239,244,.45);color:var(--slate)}
+  td.cv{font-size:12px;font-weight:500;color:var(--slate);background:rgba(233,239,244,.45)}
   tr.tot td.cv{background:rgba(233,239,244,.9);color:var(--navy);font-weight:600}
   tr.camp:hover td.cv{background:var(--mist)}
   tr.dim td{opacity:.24}
@@ -143,8 +146,28 @@
   }
   body.flagged .pill{display:inline-block}
 
+  /* ---------- funnel comparison ---------- */
+  .fnwrap{padding:6px 26px 4px}
+  .fnhd{display:flex;align-items:baseline;gap:12px;margin:14px 0 16px;flex-wrap:wrap}
+  .fnhd h3{font-size:15px;font-weight:600;margin:0;letter-spacing:-.01em}
+  .fnhd span{font-size:13px;color:var(--slate)}
+  .fnhd .sp{flex:1}
+  tr.hh td{padding-top:13px;padding-bottom:13px}
+  .fn{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .fncol{border-top:2px solid var(--navy);padding-top:12px}
+  .fncol h4{font-size:14px;font-weight:600;margin:0 0 2px;letter-spacing:-.01em}
+  .fncol .sub{font-size:11.5px;color:var(--slate);margin:0 0 13px}
+  .fnrow{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+  .fnlab{width:38px;font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);flex:0 0 auto}
+  .fntrack{flex:1;height:20px;background:var(--mist);border-radius:3px;overflow:hidden}
+  .fnfill{height:100%;background:var(--navy);border-radius:3px;transition:width .45s cubic-bezier(.2,.7,.3,1)}
+  .fnfill.acc{background:var(--accent)}
+  .fnval{width:42px;text-align:right;font-size:12.5px;font-weight:600;flex:0 0 auto}
+  .fndrop{font-size:11.5px;color:var(--mark-1);font-weight:600;margin:-3px 0 8px 47px}
+  @media (max-width:900px){.fn{grid-template-columns:1fr}}
+
   /* ---------- takeaway ---------- */
-  .take{margin:6px 34px 0;padding:20px 0 0;border-top:2px solid var(--navy);display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}
+  .take{margin:6px 26px 0;padding:20px 0 0;border-top:2px solid var(--navy);display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}
   .take .tag{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;background:var(--navy);color:var(--white);padding:6px 13px;border-radius:40px;white-space:nowrap}
   .take .tag.acc{background:var(--accent)}
   .take p{margin:0;font-size:18px;font-weight:400;line-height:1.5;flex:1;min-width:270px;color:var(--navy)}
@@ -153,14 +176,14 @@
   .take .wn{color:var(--mark-1);font-weight:600}
 
   /* ---------- notes ---------- */
-  .notes{padding:24px 34px 12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:20px 30px}
+  .notes{padding:22px 26px 12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:20px 30px}
   .note h4{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);margin:0 0 7px}
   .note{font-size:14px;font-weight:400;line-height:1.55;color:var(--slate)}
   .note b{color:var(--navy);font-weight:600}
   .note .wn{color:var(--mark-1);font-weight:600}
   .note code{font-family:inherit;font-size:13px;background:var(--mist);padding:1px 5px;border-radius:3px;color:var(--navy)}
 
-  .foot{padding:16px 34px 22px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .foot{padding:16px 26px 22px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
   .foot small{font-size:12px;color:var(--slate)}
   .tagline{font-size:17px;font-weight:600;letter-spacing:-.01em;background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent}
 
@@ -188,6 +211,7 @@
 <div class="deck">
   <section class="slide on" id="s1" aria-label="Slide 1"></section>
   <section class="slide" id="s2" aria-label="Slide 2"></section>
+  <section class="slide" id="s3" aria-label="Slide 3"></section>
 </div>
 
 <nav class="nav">
@@ -195,16 +219,17 @@
   <div class="dots">
     <button data-go="0" aria-current="true" aria-label="Slide 1: all leads"></button>
     <button data-go="1" aria-label="Slide 2: fakes removed"></button>
+    <button data-go="2" aria-label="Slide 3: head to head"></button>
   </div>
   <button class="nb" id="next">Next →</button>
-  <span class="navlabel" id="navlabel">01 / 02 — all leads</span>
+  <span class="navlabel" id="navlabel">01 / 03 — all leads</span>
 </nav>
 
 <script>
 const CAMPAIGNS = [
-  {id:'23021788224', name:'Brand search',     sub:'“easy clocking” · adwords / ppc'},
-  {id:'23031752638', name:'Non-brand search', sub:'time-clock keywords · adwords / ppc'},
-  {id:'23234508449', name:'Demand Gen',       sub:'auto-placed · google / cpc · numeric term IDs'}
+  {id:'23021788224', name:'Brand search',     sub:'“easy clocking” · ppc'},
+  {id:'23031752638', name:'Non-brand search', sub:'time-clock keywords · ppc'},
+  {id:'23234508449', name:'Demand Gen',       sub:'auto-placed · cpc · numeric IDs'}
 ];
 
 // [leads, fake, reachedMQL, reachedSQL, reachedOpp, reachedCust, arr]
@@ -236,6 +261,7 @@ const CLEAN = {
 };
 
 const money = n => n ? '$' + n.toLocaleString('en-US') : '—';
+const posCell = n => `<td class="${n?'':'zero'}">${n?`<span class="posv">${n}</span>`:n}</td>`;
 const sum = o => {const t=[0,0,0,0,0,0,0,0];for(const k in o.r){const r=o.r[k];if(r)r.forEach((x,i)=>t[i]+=x);}return t;};
 
 function table(D, mode){
@@ -246,17 +272,20 @@ function table(D, mode){
        'Lead&nbsp;&rarr;&nbsp;MQL','MQL','MQL&nbsp;&rarr;&nbsp;SQL','SQL','SQL&nbsp;&rarr;&nbsp;Opp','Opp','Opp&nbsp;&rarr;&nbsp;Cust','Cust','ARR'];
   const cvIdx = mode==='all' ? [2,6,8,10,12] : [2,5,7,9,11];
 
-  let h='<table><thead><tr>';
-  heads.forEach((x,i)=>h+=`<th class="${i?'':'lft'}${cvIdx.includes(i)?' cv':''}">${x}</th>`);
-  h+='</tr></thead><tbody>';
+  // column labels repeat at the top of every page section
+  const headRow = () => '<tr class="hdr">' +
+    heads.map((x,i)=>`<th class="${i?'':'lft'}${cvIdx.includes(i)?' cv':''}">${x}</th>`).join('') + '</tr>';
 
   const pct=(a,b)=> b ? Math.round(a/b*100)+'%' : '&mdash;';
   const na = '<span class="na">&mdash;</span>';
+
+  let h='<table><tbody>';
 
   for(const arm in D){
     const o=D[arm], t=sum(o), cols=heads.length;
     h+=`<tr class="arm"><td class="lft" colspan="2">${arm}</td>
         <td class="note" colspan="${cols-2}">25 Jun &ndash; 21 Jul 2026 &middot; 27 days</td></tr>`;
+    h+=headRow();
 
     CAMPAIGNS.forEach(c=>{
       const row=o.r[c.id];
@@ -278,8 +307,8 @@ function table(D, mode){
         : `<td class="${removed?'flag':'zero'}">${removed?'\u2212'+removed:'&mdash;'}</td>`;
       h+=`<td class="cv">${pct(mq,l)}</td><td class="${mq?'':'zero'}">${mq}</td>
           <td class="cv">${pct(sq,mq)}</td><td class="${sq?'':'zero'}">${sq}</td>
-          <td class="cv">${pct(op,sq)}</td><td class="${op?'pos':'zero'}">${op}</td>
-          <td class="cv">${pct(cu,op)}</td><td class="${cu?'pos':'zero'}">${cu}</td>
+          <td class="cv">${pct(op,sq)}</td>${posCell(op)}
+          <td class="cv">${pct(cu,op)}</td>${posCell(cu)}
           <td class="${arr?'':'zero'}">${money(arr)}</td></tr>`;
     });
 
@@ -292,8 +321,8 @@ function table(D, mode){
                       : `<td class="flag">\u2212${rem}</td>`;
     h+=`<td class="cv">${pct(M,L)}</td><td>${M}</td>
         <td class="cv">${pct(S,M)}</td><td>${S}</td>
-        <td class="cv">${pct(O,S)}</td><td class="${O?'pos':'zero'}">${O}</td>
-        <td class="cv">${pct(C,O)}</td><td class="${C?'pos':'zero'}">${C}</td>
+        <td class="cv">${pct(O,S)}</td>${posCell(O)}
+        <td class="cv">${pct(C,O)}</td>${posCell(C)}
         <td>${money(A)}</td></tr>`;
   }
   return h+'</tbody></table>';
@@ -303,7 +332,7 @@ const LOGO = `<img class="logo" alt="WorkEasy Software" src="data:image/png;base
 
 const S1 = `
 <div class="band">
-  <div class="brandrow">${LOGO}<span class="slidetag">Slide 01 of 02</span></div>
+  <div class="brandrow">${LOGO}<span class="slidetag">Slide 01 of 03</span></div>
   <p class="eyebrow">/lp/employee-time-clock · 25 Jun – 21 Jul 2026 · 27 days</p>
   <h1>All leads <span class="lt">by landing page and campaign</span></h1>
   <div class="facts">
@@ -338,7 +367,7 @@ const S1 = `
 
 const S2 = `
 <div class="band">
-  <div class="brandrow">${LOGO}<span class="slidetag">Slide 02 of 02</span></div>
+  <div class="brandrow">${LOGO}<span class="slidetag">Slide 02 of 03</span></div>
   <p class="eyebrow">Same view · 34 fake records removed</p>
   <h1>Real leads only <span class="lt">by landing page and campaign</span></h1>
   <div class="facts">
@@ -371,19 +400,126 @@ const S2 = `
 document.getElementById('s1').innerHTML = S1;
 document.getElementById('s2').innerHTML = S2;
 
+/* ---------------- SLIDE 3 : head to head, campaigns rolled up, fakes removed ---------------- */
+const HEAD = [
+  {name:'Control (current)',     tag:'baseline',        v:3579, removed:9,  leads:12, M:11, S:6, O:5, C:0, arr:7209},
+  {name:'A \u2014 bold redesign',     tag:'challenger',      v:3542, removed:16, leads:7,  M:7,  S:4, O:3, C:1, arr:1571},
+  {name:'B \u2014 optimized current', tag:'challenger',      v:3383, removed:9,  leads:11, M:11, S:1, O:1, C:0, arr:130000}
+];
+
+function headTable(){
+  const heads=['Landing page','Visitors','Conv rate','vs Control','Real leads','Fakes removed',
+               'Lead&nbsp;&rarr;&nbsp;MQL','MQL','MQL&nbsp;&rarr;&nbsp;SQL','SQL','SQL&nbsp;&rarr;&nbsp;Opp','Opp','Opp&nbsp;&rarr;&nbsp;Cust','Cust','ARR'];
+  const cvIdx=[2,6,8,10,12];
+  const pct=(a,b)=> b ? Math.round(a/b*100)+'%' : '&mdash;';
+  const base=HEAD[0].leads/HEAD[0].v;
+
+  let h='<table><tbody><tr class="hdr">';
+  heads.forEach((x,i)=>h+=`<th class="${i?'':'lft'}${cvIdx.includes(i)?' cv':''}">${x}</th>`);
+  h+='</tr>';
+
+  HEAD.forEach(d=>{
+    const conv=d.leads/d.v, lift=conv/base-1;
+    const liftCell = d.tag==='baseline'
+      ? '<td class="zero">baseline</td>'
+      : `<td class="${lift<0?'flag':''}">${lift<0?'':'<span class="posv">'}${(lift*100).toFixed(1)}%${lift<0?'':'</span>'}</td>`;
+    h+=`<tr class="camp hh">
+        <td class="lft"><b>${d.name}</b><span class="csub">${d.tag} &middot; all campaigns combined</span></td>
+        <td>${d.v.toLocaleString()}</td>
+        <td class="cv">${(conv*100).toFixed(2)}%</td>
+        ${liftCell}
+        <td>${d.leads}</td>
+        <td class="flag">\u2212${d.removed}</td>
+        <td class="cv">${pct(d.M,d.leads)}</td><td>${d.M}</td>
+        <td class="cv">${pct(d.S,d.M)}</td><td>${d.S}</td>
+        <td class="cv">${pct(d.O,d.S)}</td>${posCell(d.O)}
+        <td class="cv">${pct(d.C,d.O)}</td>${posCell(d.C)}
+        <td>${money(d.arr)}</td></tr>`;
+  });
+  return h+'</tbody></table>';
+}
+
+function funnel(mode){
+  const steps=['Leads','MQL','SQL','Opp','Cust'];
+  const val=(d,k)=> mode==='per1k' ? d[k]/d.v*1000 : d[k];
+  const keys=['leads','M','S','O','C'];
+  let max=0; HEAD.forEach(d=>keys.forEach(k=>max=Math.max(max,val(d,k))));
+  const fmt=x=> mode==='per1k' ? x.toFixed(2) : String(x);
+
+  return HEAD.map(d=>{
+    let rows='';
+    keys.forEach((k,i)=>{
+      const x=val(d,k), w=max? (x/max*100):0;
+      rows+=`<div class="fnrow"><span class="fnlab">${steps[i]}</span>
+             <span class="fntrack"><span class="fnfill${d.name[0]==='B'?' acc':''}" style="width:${w}%"></span></span>
+             <span class="fnval">${fmt(x)}</span></div>`;
+      if(i===1 && d.M){
+        const drop=Math.round((1-d.S/d.M)*100);
+        if(drop>=70) rows+=`<div class="fndrop">\u2193 ${drop}% lost at this step</div>`;
+      }
+    });
+    return `<div class="fncol"><h4>${d.name}</h4><p class="sub">${d.leads} real leads &middot; ${d.v.toLocaleString()} visitors</p>${rows}</div>`;
+  }).join('');
+}
+
+const S3 = `
+<div class="band">
+  <div class="brandrow">${LOGO}<span class="slidetag">Slide 03 of 03</span></div>
+  <p class="eyebrow">Head to head \u00b7 campaigns rolled up \u00b7 fakes removed</p>
+  <h1>Page vs page <span class="lt">on real leads only</span></h1>
+  <div class="facts">
+    <div class="fact"><span class="k">Real leads</span><span class="v">30</span></div>
+    <div class="fact"><span class="k">Best conv rate</span><span class="v">Control 0.34%</span></div>
+    <div class="fact"><span class="k">A vs Control</span><span class="v warn">\u221241.1%</span></div>
+    <div class="fact"><span class="k">B vs Control</span><span class="v warn">\u22123.0%</span></div>
+    <div class="fact"><span class="k">Significant</span><span class="v grad">none</span></div>
+  </div>
+</div>
+<div class="tw">${headTable()}</div>
+<div class="fnwrap">
+  <div class="fnhd">
+    <h3>Funnel shape</h3><span>where each page gains and loses its leads</span>
+    <span class="sp"></span>
+    <button class="btn" id="fnToggle" aria-pressed="true">Per 1,000 visitors</button>
+  </div>
+  <div class="fn" id="fnBody">${funnel('per1k')}</div>
+</div>
+<div class="take">
+  <span class="tag">Bottom line</span>
+  <p>With fakes stripped and campaigns combined, <b>neither challenger beats Control</b>. A converts <span class="wn">41% below</span> baseline. B lands within <b>3%</b> \u2014 a tie, not a win. B also loses <span class="wn">91% of its MQLs</span> before SQL, against Control\u2019s 45%. On 7\u201312 real leads per page <b>nothing here is significant</b>: this is a read, not a decision.</p>
+</div>
+<div class="notes">
+  <div class="note"><h4>What\u2019s rolled up</h4>All three campaigns combined per page, <b>34 fake records excluded</b>. Visitors are total page traffic, so conversion rate is real leads \u00f7 all visitors \u2014 comparable across pages despite unequal traffic.</div>
+  <div class="note"><h4>Why per 1,000 visitors</h4>Traffic differs by ~200 visitors between pages. The funnel bars default to a per-1,000 basis so shapes are comparable; toggle to absolute counts to see raw volume.</div>
+  <div class="note"><h4>B\u2019s funnel is top-heavy</h4>B ties Control on lead volume but converts <b>1 of 11 MQLs</b> to SQL. Its single opportunity is the real $130,000 Livewell deal \u2014 genuine, but one account, and open pipeline rather than closed revenue.</div>
+  <div class="note"><h4>Don\u2019t ship on this</h4>The test ran <b>27 days</b> against a pre-registered \u201cfour full weeks, read once\u201d plan, and the primary metric (form-start rate) shows A at \u22120.6% and B at +15.3%, neither significant. Fix the junk guardrail and let it finish.</div>
+</div>
+<div class="foot"><small>Source: employee-time-clock-ab-leads-2026-07-21.csv \u00b7 30 of 64 records \u00b7 25 Jun \u2013 21 Jul 2026</small><span class="tagline">Remarkable</span></div>`;
+
+document.getElementById('s3').innerHTML = S3;
+
+const fnT=document.getElementById('fnToggle');
+fnT.onclick=()=>{
+  const per=fnT.getAttribute('aria-pressed')==='true';
+  fnT.setAttribute('aria-pressed',String(!per));
+  fnT.textContent = per ? 'Absolute counts' : 'Per 1,000 visitors';
+  document.getElementById('fnBody').innerHTML = funnel(per?'abs':'per1k');
+};
+
+
 /* nav */
-const cards=[document.getElementById('s1'),document.getElementById('s2')];
+const cards=[document.getElementById('s1'),document.getElementById('s2'),document.getElementById('s3')];
 const dots=[...document.querySelectorAll('.dots button')];
 const label=document.getElementById('navlabel');
-const names=['all leads','fakes removed'];
+const names=['all leads','fakes removed','head to head'];
 let cur=0;
 function go(i){
-  cur=Math.max(0,Math.min(1,i));
+  cur=Math.max(0,Math.min(2,i));
   cards.forEach((c,n)=>c.classList.toggle('on',n===cur));
   dots.forEach((d,n)=>d.setAttribute('aria-current',String(n===cur)));
   document.getElementById('prev').disabled=cur===0;
-  document.getElementById('next').disabled=cur===1;
-  label.textContent=`0${cur+1} / 02 — ${names[cur]}`;
+  document.getElementById('next').disabled=cur===2;
+  label.textContent=`0${cur+1} / 03 — ${names[cur]}`;
   window.scrollTo({top:0,behavior:'instant'});
 }
 document.getElementById('prev').onclick=()=>go(cur-1);
